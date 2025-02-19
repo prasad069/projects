@@ -1,0 +1,61 @@
+package com.example.s20country;
+
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    // List of countries
+    String[] countries = {
+        "United States", "Canada", "Mexico", "Brazil", "Argentina", "Chile",
+        "United Kingdom", "France", "Germany", "Italy", "Spain", "India",
+        "China", "Japan", "South Korea", "Australia", "New Zealand",
+        "South Africa", "Egypt", "Nigeria", "Kenya"
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); // Set the content view
+
+        // Find the ListView by ID
+        ListView countryListView = findViewById(R.id.countryListView);
+
+        // Create an ArrayAdapter to bind the countries array to the ListView
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+            this, // Context (activity)
+            android.R.layout.simple_list_item_1, // Built-in layout for list item
+            countries // The array of country names
+        );
+
+        // Set the adapter to the ListView
+        countryListView.setAdapter(adapter);
+    }
+}
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- ListView to display list of countries -->
+    <ListView
+        android:id="@+id/countryListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
